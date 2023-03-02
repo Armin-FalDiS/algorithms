@@ -62,7 +62,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "selection-randomized"
+name = "selection_randomized"
 version = "0.1.0"
 dependencies = [
  "rand",

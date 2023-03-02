@@ -1,5 +1,5 @@
 [package]
-name = "merge-sort"
+name = "merge_sort"
 version = "0.1.0"
 edition = "2021"
 
