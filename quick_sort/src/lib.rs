@@ -20,6 +20,6 @@ pub fn quick_sort<T: Ord>(array: &mut Vec<T>, start: usize, end: usize) {
 
     array.swap(start, seperator_index);
 
-    quick_sort(array, start, seperator_index + 1);
+    quick_sort(array, start, seperator_index);
     quick_sort(array, seperator_index + 1, end);
 }
