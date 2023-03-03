@@ -3,9 +3,11 @@ use rand::Rng;
 fn main() {
     let mut array = vec![5, 1, -10, 3, 100, 20000, 77, 6, 7, -1, 0];
 
-    let answer = selection(&mut array, 0, 11, 5 - 1);
+    let i = 5;
 
-    println!("5th element = {}", answer);
+    let answer = selection(&mut array, 0, 11, i - 1);
+
+    println!("{}th smallest element = {}", i, answer);
 }
 
 fn selection<T: Ord + Clone>(array: &mut Vec<T>, start: usize, end: usize, element: usize) -> T {
@@ -32,7 +34,7 @@ fn selection<T: Ord + Clone>(array: &mut Vec<T>, start: usize, end: usize, eleme
         array.get(seperator_index).unwrap().clone()
     }
     else if element < seperator_index {
-        selection(array, start, seperator_index + 1, element)
+        selection(array, start, seperator_index, element)
     } else {
         selection(array, seperator_index + 1, end, element)
     }
