@@ -1,6 +1,6 @@
 extern crate quick_sort;
 use quick_sort::quick_sort;
-use std::{cmp::min, fmt::Debug};
+use std::cmp::min;
 
 fn main() {
     let mut array = vec![5, 1, -10, 3, 100, 20000, 77, 6, 7, -1, 0];
@@ -12,7 +12,7 @@ fn main() {
     println!("{}th smallest element = {}", i, answer);
 }
 
-fn selection<T: Ord + Clone + Debug>(array: &mut Vec<T>, start: usize, end: usize, element: usize) -> T {
+fn selection<T: Ord + Clone>(array: &mut Vec<T>, start: usize, end: usize, element: usize) -> T {
     if end - start <= 1 {
         return array.get(start).unwrap().clone();
     }
