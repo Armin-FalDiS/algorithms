@@ -40,9 +40,10 @@ fn min_cut(vertices: HashSet<String>, edges: Vec<(String, String)>) -> (HashSet<
         random_contraction(&mut v, &mut e);
 
         if e.len() < min_cut_degree {
-            println!("New minimum cut on try #{}!", i);
             minimum_cut = v;
             min_cut_degree = e.len();
+            
+            println!("New minimum cut on try #{} with a size of {}!", i, min_cut_degree);
         }
     }
 
