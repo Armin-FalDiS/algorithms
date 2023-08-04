@@ -18,21 +18,24 @@ fn main() {
         Edge { from: 3, to: 4, weight: 12 },
     ];
 
-    println!("{:?}", kruskal(edges, 5));
+    println!("{:?}", cluster(edges, 5, 2));
 }
 
-fn kruskal(mut edges: Vec<Edge>, vertex_count: usize) -> Vec<Edge> {
-    let mut uf: UnionFind<usize> = UnionFind::new(vertex_count);
-    let mut tree: Vec<Edge> = Default::default();
+fn cluster(mut edges: Vec<Edge>, vertex_count: usize, desired_cluster_count: usize) -> Vec<usize> {
+    let mut cluster_count = vertex_count;
+    let mut uf: UnionFind<usize> = UnionFind::new(cluster_count);
 
     edges.sort_unstable_by(|a, b| b.weight.cmp(&a.weight));
-    
+
     while let Some(e) = edges.pop() {
-        if !uf.equiv(e.from, e.to) {
-            uf.union(e.from, e.to);
-            tree.push(e);
+        if cluster_count == desired_cluster_count {
+            break;
+        }
+
+        if uf.union(e.from, e.to) {
+            cluster_count -= 1;
         }
     }
 
-    tree
+    return uf.into_labeling();
 }
